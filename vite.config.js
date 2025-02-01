@@ -1,20 +1,16 @@
 import { defineConfig } from 'vite';
 import solidPlugin from 'vite-plugin-solid';
-// import devtools from 'solid-devtools/vite';
 
 export default defineConfig({
-  plugins: [
-    /* 
-    Uncomment the following line to enable solid-devtools.
-    For more info see https://github.com/thetarnav/solid-devtools/tree/main/packages/extension#readme
-    */
-    // devtools(),
-    solidPlugin(),
-  ],
+  base: '/speckle_test/', // ✅ Matches your actual GitHub repo name
+  plugins: [solidPlugin()],
   server: {
     port: 3000,
   },
   build: {
+    outDir: 'dist', // ✅ Ensures Vite outputs files in the right directory
+    assetsDir: 'assets', // ✅ Ensures assets (JS, CSS) are correctly placed
+    emptyOutDir: true, // ✅ Clears old files before building
     target: 'esnext',
   },
 });
